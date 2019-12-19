@@ -1,0 +1,19 @@
+on: 
+  push:
+    branches:
+    - master
+    paths:
+    - 'hw1.Rmd'  
+name: Check Repo
+jobs:
+  allowed-files:
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/r-ver:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check Allowed Files
+      run: Rscript hw1_whitelist.R
+      
+      
